@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Analytics Form</title>
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+header {
+    background-color: #fff;
+    color: #000;
+    padding: 2px 20px;
+    text-align: left;
+   
+    
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+nav {
+    display: flex;
+    justify-content: left;
+}
+nav a {
+    color: #ccc;
+    text-decoration: none;
+    margin: 20px;
+}
+nav a:not(:last-child)::after {
+    content: ">"; /* Unicode hex for a right arrow (→) */
+    margin-left: 10px; /* Add space between text and arrow */
+}
+nav a[href="http://127.0.0.1:5000/"] {
+    color: red;
+    font-weight: bold;
+    /* Add any other styling you want */
+}
+
+/* Add more styles as needed */
+
+.main_content {
+    /* Vertically center items */
+    padding: 20px;
+    background-color: #fff; /* White */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+.title {
+    flex: 1; /* Take up remaining space */
+    padding-left: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.alert_alert-danger{
+    padding: 20px;
+    text-align: center;
+    color: #fc0303;
+}
+
+form {
+    max-width: 100%; /* Form takes full width */
+    padding: 20px;
+    background-color: #fff;
+    margin: 0 auto; /* Center the form horizontally */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    
+}
+
+input {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px ;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    background-color: #fc0303;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 100%; 
+}
+
+input[type="submit"]:hover {
+    background-color:#bf1d1d;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#">Home</a>
+            <a href="http://127.0.0.1:5000/">Input Form</a>
+        </nav>
+    </header>
+    <div class="main_content">
+        
+    <div class="container">
+        <div class="title">
+            <h1>Material Analytics Input Form</h1>
+            <!-- Add your form elements here -->
+        </div>
+        
+    </div>
+    
+    <form action="/submit" method="post">
+        <label for="device_description">Device Description:</label>
+        <input type="text" id="device_description" name="device_description">
+        <br>
+        <label for="type_description">Type Description:</label>
+        <input type="text" id="type_description" name="type_description">
+        <br>
+        <label for="manufacturer">Manufacturer:</label>
+        <input type="text" id="manufacturer" name="manufacturer">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    {% if error_message %}
+        <div class="alert_alert-danger" role="alert">
+            error: {{ error_message }}
+        </div>
+    {% endif %}
+    
+</div>
+
+</body>
+</html>
+
